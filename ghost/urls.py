@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from ghost import views
 from ghost.models import BRoast
 
@@ -22,5 +22,11 @@ admin.site.register(BRoast)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('/',)
+    path('add', views.broast_form, name="add"),
+    path('', views.homepage, name="homepage"),
+    path('byvote', views.homepage, {"byvote":True}, name="byvote"),
+    path('boasts', views.homepage, {"roasts":True}, name="boasts"),
+    path('roasts', views.homepage, {"boasts":True}, name="roasts"),
+    path('<int:pk>/<slug:vote>', views.homepage, name="upvote"),
+    path('<int:pk>/<slug:vote>', views.homepage, name="downvote"),
 ]

@@ -1,6 +1,9 @@
+{% load subtract %}
 <h1>{{ broast.roast_or_boast }}</h1>
 <br>
 {{ broast.content }}
 
-<button>upboat</button>
-<button>downwrote</button>
+score {{ broast.upboats|subtract:broast.downrowts }}
+
+<a href="{% url 'upvote' broast.id 'upvote'%}">upboat</a>
+<a href="{% url 'downvote' broast.id 'downvote'%}">downwrote</a>

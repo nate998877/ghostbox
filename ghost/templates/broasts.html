@@ -1,5 +1,11 @@
 <h1>list of all the broasts that exist</h1>
+<a href="{% url 'add' %}">add broast</a>
+
+<a href="{% url 'byvote' %}">sort by total vote</a>
+<a href="{% url 'boasts' %}">boasts only</a>
+<a href="{% url 'roasts' %}">roasts only</a>
+
+
 {% for broast in broasts %}
   {% include "broast.html" with broast=broast %}
 {% endfor %}
-roast
