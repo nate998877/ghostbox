@@ -15,6 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from ghost import views
+from ghost.models import BRoast
+
+admin.site.register(BRoast)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
